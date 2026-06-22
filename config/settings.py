@@ -7,11 +7,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # -----------------------------
 
-SECRET_KEY = 'django-insecure-rcbrl+wr0_!l8o3l72szaai&&lu%mi^+6s%dz52!_4-jb298u'
+import os
 
-DEBUG = True
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get("DEBUG") == "True"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 
 # -----------------------------
